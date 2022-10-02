@@ -1,0 +1,2 @@
+mongod --dbpath "C:\coder\miBaseMongo"
+https://github.com/microsoftarchive/redis/releases

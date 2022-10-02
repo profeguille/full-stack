@@ -1,0 +1,1 @@
+Complete full stack test.
