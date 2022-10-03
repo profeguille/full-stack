@@ -7,8 +7,8 @@ function setAppEngine(app) {
     engine({
       extname: '.hbs',
       defaultLayout: 'index.hbs',
-      layoutsDir: __dirname + '/views/layouts',
-      partialsDir: __dirname + '/views/partials',
+      layoutsDir: './views/layouts',
+      partialsDir: './views/partials',
     })
   );
 }

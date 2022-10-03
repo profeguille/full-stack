@@ -1,7 +1,3 @@
-function getRoot(req, res) {
-  res.render('index', {});
-}
-
 function getLogin(req, res) {
   if (req.isAuthenticated()) {
     const { username, password } = req.user;
@@ -47,12 +43,7 @@ function getLogout(req, res) {
   res.render('index');
 }
 
-function failRoute(req, res) {
-  res.status(404).render('routing-error', {});
-}
-
 module.exports = {
-  getRoot,
   getLogin,
   getSignup,
   postLogin,
@@ -60,5 +51,4 @@ module.exports = {
   getFaillogin,
   getFailsignup,
   getLogout,
-  failRoute,
 };

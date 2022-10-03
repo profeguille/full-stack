@@ -1,12 +1,13 @@
+const passport = require('passport');
 const LocalStrategy = require('passport-local').Strategy;
-const Usuarios = require('../models/usuarios.models.js');
+const Users = require('../models/user.model.js');
 const { isValidPassword, createHash } = require('../utils/helpers/bcrypt.js');
 
-function configPassport(passport) {
+function configPassport() {
   passport.use(
     'login',
     new LocalStrategy((username, password, done) => {
-      Usuarios.findOne({ username: username }, (err, user) => {
+      Users.findOne({ username: username }, (err, user) => {
         if (err) return done(err);
 
         if (!user) {
@@ -32,7 +33,7 @@ function configPassport(passport) {
         passReqToCallback: true,
       },
       (req, username, password, done) => {
-        Usuarios.findOne({ username: username }, function (err, user) {
+        Users.findOne({ username: username }, function (err, user) {
           if (err) {
             console.log('Error in SignUp: ' + err);
             return done(err);
@@ -47,7 +48,7 @@ function configPassport(passport) {
             username: username,
             password: createHash(password),
           };
-          Usuarios.create(newUser, (err, user) => {
+          Users.create(newUser, (err, user) => {
             if (err) {
               console.log('Error in Saving user: ' + err);
               return done(err);
@@ -67,7 +68,7 @@ function configPassport(passport) {
   });
 
   passport.deserializeUser((id, done) => {
-    Usuarios.findById(id, done);
+    Users.findById(id, done);
   });
 }
 module.exports = { configPassport };

@@ -1,4 +1,7 @@
-function setAppMiddleWares(app, express, passport) {
+function setAppMiddleWares(app) {
+  const express = require('express');
+  const passport = require('passport');
+
   app.use('/public', express.static(__dirname + '/public'));
 
   app.use(passport.initialize());
