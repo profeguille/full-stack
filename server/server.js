@@ -1,20 +1,13 @@
 const express = require('express');
 const app = express();
+
 require('dotenv').config();
-
-const { connectMongoose } = require('./config/mongooseConnection');
-const { configPassport } = require('./config/passport');
-const { setAppSessionRedis } = require('./config/appSession');
-const { setAppEngine } = require('./config/appEngine');
-const { setAppMiddleWares } = require('./config/appMiddelWares');
-const { initializeApp } = require('./config/initializeApp');
-
-connectMongoose();
-setAppSessionRedis(app);
-configPassport();
-setAppEngine(app);
-setAppMiddleWares(app);
-initializeApp(app);
+require('./config/mongooseConnection').connectMongoose();
+require('./config/appSession').setAppSessionRedis(app);
+require('./config/passport').configPassport();
+require('./config/appEngine').setAppEngine(app);
+require('./config/appMiddelWares').setAppMiddleWares(app);
+require('./config/initializeApp').initializeApp(app);
 
 app.use('/api/auth', require('./routes/auth.routes'));
 
