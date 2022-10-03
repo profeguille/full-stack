@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 
 function connectMongoose() {
   mongoose
-    .connect('mongodb://localhost:27017/testLogin')
+    .connect('mongodb://localhost:27017/budget')
     .then(() => {
       console.log('Connected to Mongo');
     })

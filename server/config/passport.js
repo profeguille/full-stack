@@ -53,7 +53,7 @@ function configPassport() {
               console.log('Error in Saving user: ' + err);
               return done(err);
             }
-            console.log(user);
+            //console.log(user);
             console.log('User Registration succesful');
             //QUEDA LOGUEADO
             return done(null, user);
